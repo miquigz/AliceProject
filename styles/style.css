@@ -1,0 +1,35 @@
+.pantalla{
+    background-image: url(../images/fondoAlice.jpg);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 1024px;
+    height: 768px;
+}
+
+.pantalla>div>p{
+    color:white;
+    display: flex;
+}
+
+.contenedor-p{
+    align-self: center;
+    background-color: rgba(19, 17, 17, 0.863);
+    margin: 40px 40px;
+    width: 800px;
+    height: 500px;
+}
+
+.contenedor-p>p{
+    margin:25px;
+}
+
+.contenedor-botones{
+    display: flex;
+    justify-content: space-around;
+}
+
+.contenedor-botones>button{
+    width: 150px;
+    height: 50px;
+}
