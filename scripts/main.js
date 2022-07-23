@@ -1,21 +1,26 @@
 const boton1 = document.querySelector("#boton1")
 const boton2 = document.querySelector("#boton2")
 const contBotones = document.querySelector("#cont-botones")
-
+const titulo = document.querySelector('#alice-h1')
+const navbar = document.querySelector('#navbar')
 const pant = document.querySelector("#pantalla-main");
 let parrafoAct = document.querySelector("#texto-actual");
-// let pantallaActual = -1;
 let pantallaActual = -1;
 let inicio = false;
-
-let em = document.createElement("em")
-let strong = document.createElement('strong')
 
 let textos = {
     pant: ['Texto pantalla0','Texto pantalla1','Texto pantalla2','Texto pantalla3'],
     btn1: ['Texto boton1-Pant0', 'Texto boton1-Pant1', 'Texto boton1-Pant2', 'Texto boton1-Pant3'],
     btn2: ['Texto boton2-Pant0', 'Texto boton2-Pant1', 'Texto boton2-Pant2', 'Texto boton2-Pant3']
 }
+
+
+
+
+
+
+
+
 
 //------------------------FUNCIONES-------------------
 
@@ -25,18 +30,50 @@ const mostrarTexto = () => {
     boton2.textContent = textos.btn2[pantallaActual];
 }
 
-let iniciarAventura =  ()=>{
+//Evento Keydown (Principio)
+let iniciarAventura = ()=>{ //Referencia function, necesaria: para clearEventListener
     inicio = true;
     parrafoAct.className = 'oscurecerLetras'
     setTimeout(cinematica, 2000)
 }
 window.addEventListener('keydown', iniciarAventura)
 
-//Cinematica INICIO
+/*                      Animacion NAVBAR (Comienzo)           */
+let rotarColores = ()=>{
+    titulo.classList.contains('blanco') ? titulo.className  = 'violeta' : titulo.className  = 'blanco'
+    let arrayA = document.querySelectorAll('a');
+    arrayA[0].classList.contains('blanco') ? arrayA[0].className  = 'violeta' : arrayA[0].className  = 'blanco'
+    arrayA[1].classList.contains('blanco') ? arrayA[1].className  = 'violeta' : arrayA[1].className  = 'blanco'
+    arrayA[2].classList.contains('blanco') ? arrayA[2].className  = 'violeta' : arrayA[2].className  = 'blanco'
+}
+let rotar1 = setInterval(rotarColores, 5000);
+setTimeout(() => {
+    titulo.className = 'rotar'
+    let a = document.createElement('a')
+    let a2 = document.createElement('a')
+    setTimeout(() => {
+        titulo.insertAdjacentText('beforeend', ' - ') //Agrego ' - '
+        a.textContent = 'Miqueas Gimenez'
+        a.href = 'aboutme.html'
+        titulo.insertAdjacentElement("beforeend", a)
+        titulo.insertAdjacentText('beforeend', ' - ')//Agrego ' - '
+        a2.textContent = 'Mapa'
+        a2.href = 'mapa.html'
+        titulo.insertAdjacentElement("beforeend", a2)
+        titulo.className = 'desRotar'
+    }, 3000);
+}, 1000);
+
+/*          Cinematica Inicio (Comienzo)           */
 let cinematica = ()=>{
     window.removeEventListener('keydown', iniciarAventura)
+    navbar.classList.remove('inclinado')
+    clearInterval(rotar1)
+    let rotar2 = setInterval(rotarColores, 15000);
     if (inicio) {
         let pantallaInicio1 = ()=>{
+            let em = document.createElement("em")
+            let strong = document.createElement('strong')
             pant.className = 'inicio0-alice'
             parrafoAct.className = ''
             parrafoAct.textContent = 'Aventura Grafica '
@@ -51,46 +88,33 @@ let cinematica = ()=>{
             parrafoAct.appendChild(text2)    
         }
         pantallaInicio1()
-    
         setTimeout( ()=> pant.classList.add('achicar') , 3000) //3seg achico
-        console.log(pant.className)
-    
         let pantallaInicio2 = ()=> {
-            console.log(pant.className);
             if (pant.className === 'inicio0-alice achicar') {
                 pant.className = "inicio1-alice"
                 parrafoAct.textContent = ''
             }    
-            console.log(pant.className)
             setTimeout(function opcty(){
                 pant.classList.add('opacidad0')
             }, 4000) //12 seg = alice opacity 0
         }
-    
         setTimeout(pantallaInicio2, 8000); //8seg pant2
-    
-        setTimeout(
-            ()=> {
-                pant.className = 'opacidad00'
-                parrafoAct.textContent = textos.pant[0]
-                boton1.textContent = textos.btn1[0]
-                boton2.textContent = textos.btn1[0]
-                contBotones.className = 'contenedor-botones'
-                setTimeout(()=> pant.className ='pantalla', 1000) //18 seg pantalla.
-            }, 15000); //15 seg (opacidad 0)
-        console.log(pant.className)
+        setTimeout(()=> {
+            pant.className = 'opacidad00'
+            parrafoAct.textContent = textos.pant[0]
+            boton1.textContent = textos.btn1[0]
+            boton2.textContent = textos.btn1[0]
+            contBotones.className = 'contenedor-botones'
+            setTimeout(()=> pant.className ='pantalla', 1000) //18 seg pantalla.
+        }, 15000); //15 seg (opacidad 0)
     }
     inicio = false;
 }
 
 
+//PONER LAS PANTALLAS ACTUALES ACORDE a la function -- Done!
 
-
-
-
-//PONER LAS PANTALLAS ACTUALES ACORDE a la function
-
-//Funciones de las Pantallas.
+/*                      Funciones de Pantallas                     */
 let pant27 = () => {
     pantallaActual = 27;
     mostrarTexto();

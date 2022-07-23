@@ -1,5 +1,74 @@
 body{
-    background-color: darkgray;
+    /* background-color: darkgray; */
+    /* background: rgb(51,21,78);
+    background: linear-gradient(0deg, rgba(51,21,78,1) 0%, rgba(98,80,115,1) 27%, rgba(118,99,136,1) 48%, rgba(123,103,142,1) 57%, rgba(129,107,150,1) 74%, rgba(145,120,173,1) 100%); */
+    /* background: rgb(51,21,78); */
+    background: linear-gradient(0deg, rgba(51,21,78,0.42620798319327735) 0%, rgba(98,80,115,0.6278886554621849) 27%, rgba(118,99,136,1) 48%, rgba(123,103,142,1) 57%, rgba(129,107,150,1) 74%, rgba(145,120,173,1) 100%);
+}
+
+nav{
+    transition: 2s;
+    width: 45%;
+    background-image: url(../images/fondoAlice.jpg);
+    border-radius: 5%;
+    height: 65px;
+    letter-spacing: 7px;
+    margin: 5px 10px 20px 10px;
+    padding: 1px 15px;
+    color: white;
+    clip-path: polygon(0% 0%, 95% 5%, 100% 50%, 95% 95%, 0% 100%);
+    
+}
+
+.inclinado{
+    transform:rotate(-3deg)
+}
+
+.blanco{
+    transition: 2s;
+    letter-spacing: 6.2px;
+    color:rgb(255, 255, 255);
+}
+
+.violeta{
+    transition: 2s;
+    letter-spacing: 5.5px;
+    color:rgb(134, 65, 117);
+}
+
+.rotar{
+    transition: 1s;
+    transform: rotateX(3.142rad);
+    letter-spacing: 15px;
+}
+
+.desRotar{
+    transition: 3s;
+    transform: rotateX(0);
+    letter-spacing: 7px;
+}
+
+nav:hover{
+    transition: 4s;
+    transform:rotate(1deg) ;
+}
+
+nav>h1:hover{
+    transition: 4s;
+    letter-spacing: 2px;
+}
+
+nav>h1>a:hover{
+    transition: 2s;
+    color:rgb(207, 102, 181);
+    letter-spacing: 8px;
+    padding-left: 2px;
+}
+
+nav>h1>a{
+    transition: 1s;
+    color:white;
+    text-decoration: none;
 }
 
 .inicio{
