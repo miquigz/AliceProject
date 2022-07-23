@@ -9,9 +9,111 @@ let pantallaActual = -1;
 let inicio = false;
 
 let textos = {
-    pant: ['Texto pantalla0','Texto pantalla1','Texto pantalla2','Texto pantalla3'],
-    btn1: ['Texto boton1-Pant0', 'Texto boton1-Pant1', 'Texto boton1-Pant2', 'Texto boton1-Pant3'],
-    btn2: ['Texto boton2-Pant0', 'Texto boton2-Pant1', 'Texto boton2-Pant2', 'Texto boton2-Pant3']
+    pant: [
+        'Texto pantalla0',
+        'Texto pantalla1',
+        'Texto pantalla2',
+        'Texto pantalla3',
+        'Texto pantalla4',
+        'Texto pantalla5',
+        'Texto pantalla6',
+        'Texto pantalla7', 
+        'Texto pantalla8',
+        'Texto pantalla9',
+        'Texto pantalla10',
+        'Texto pantalla11', 
+        'Texto pantalla12',
+        'Texto pantalla13',
+        'Texto pantalla14',
+        'Texto pantalla15',
+        'Texto pantalla16',
+        'Texto pantalla17',
+        'Texto pantalla18',
+        'Texto pantalla19',
+        'Texto pantalla20',
+        'Texto pantalla21',
+        'Texto pantalla22',
+        'Texto pantalla23',
+        'Texto pantalla24',
+        'Texto pantalla25',
+        'Texto pantalla26',
+        'Texto pantalla27',
+        'Texto pantalla28',
+        'Texto pantalla29',
+        'Texto pantalla30',
+        'Texto pantalla31',
+        'Texto pantalla32',
+    ],
+    btn1: [
+        'Texto boton1-Pant0',
+        'Texto boton1-Pant1', 
+        'Texto boton1-Pant2', 
+        'Texto boton1-Pant3', 
+        'Texto boton1-Pant4',
+        'Texto boton1-Pant5',
+        'Texto boton1-Pant6',
+        'Texto boton1-Pant7',
+        'Texto boton1-Pant8',
+        'Texto boton1-Pant9',
+        'Texto boton1-Pant10',
+        'Texto boton1-Pant11',
+        'Texto boton1-Pant12',
+        'Texto boton1-Pant13',
+        'Texto boton1-Pant14',
+        'Texto boton1-Pant15',
+        'Texto boton1-Pant16',
+        'Texto boton1-Pant17',
+        'Texto boton1-Pant18', 
+        'Texto boton1-Pant19',
+        'Texto boton1-Pant20',
+        'Texto boton1-Pant21',
+        'Texto boton1-Pant22', 
+        'Texto boton1-Pant23', 
+        'Texto boton1-Pant24', 
+        'Texto boton1-Pant25',
+        'Texto boton1-Pant26',
+        'Texto boton1-Pant27', 
+        'Texto boton1-Pant28', 
+        'Texto boton1-Pant29', 
+        'Texto boton1-Pant30',
+        'Texto boton1-Pant31',
+        'Texto boton1-Pant32'
+    ],
+    btn2: [
+        '',//0
+        'Texto boton2-Pant1', 
+        'Texto boton2-Pant2', 
+        'Texto boton2-Pant3', 
+        'Texto boton2-Pant4',
+        '',//5
+        '',
+        '',
+        '',//8
+        'Texto boton2-Pant9',
+        '',//10
+        '',//
+        '',//
+        '',//13
+        'Texto boton2-Pant14',
+        '',//15
+        '',//
+        '',//
+        '', //
+        '',//19
+        'Texto boton2-Pant20',
+        '',//21
+        '', //22
+        '', //23
+        '', //24
+        '',//25
+        '',//26
+        '',//27 
+        '',//28 [Final0]
+        '',//29 [Final1]
+        '',//30 [Final2]
+        '',//31 [Final3]
+        ''//32 [Final4]
+    ]
 }
 
 
@@ -25,9 +127,16 @@ let textos = {
 //------------------------FUNCIONES-------------------
 
 const mostrarTexto = () => {
+    console.log(contBotones.lastElementChild === boton2)
     parrafoAct.textContent = textos.pant[pantallaActual];
     boton1.textContent = textos.btn1[pantallaActual];
-    boton2.textContent = textos.btn2[pantallaActual];
+    if (textos.btn2[pantallaActual] !== ''){
+        boton2.textContent = textos.btn2[pantallaActual];
+        contBotones.insertAdjacentElement("beforeend", boton2)
+    } else{
+        if (contBotones.lastElementChild === boton2)
+            contBotones.removeChild(boton2);
+    }
 }
 
 //Evento Keydown (Principio)
@@ -65,75 +174,77 @@ setTimeout(() => {
 }, 1000);
 
 /*          Cinematica Inicio (Comienzo)           */
-let cinematica = ()=>{
-    window.removeEventListener('keydown', iniciarAventura)
-    navbar.classList.remove('inclinado')
-    clearInterval(rotar1)
-    let rotar2 = setInterval(rotarColores, 15000);
-    if (inicio) {
-        let pantallaInicio1 = ()=>{
-            let em = document.createElement("em")
-            let strong = document.createElement('strong')
-            pant.className = 'inicio0-alice'
-            parrafoAct.className = ''
-            parrafoAct.textContent = 'Aventura Grafica '
-            parrafoAct.appendChild(em)
-            em.appendChild(strong)
-            strong.textContent = 'Alice'
-            parrafoAct.appendChild(document.createElement('br'))
-            let text = document.createTextNode('Desarrollada y diseñada por:')  
-            parrafoAct.appendChild(text)
-            parrafoAct.appendChild(document.createElement('br'))
-            let text2 = document.createTextNode('Miqueas Ezequiel Gimenez');
-            parrafoAct.appendChild(text2)    
-        }
-        pantallaInicio1()
-        setTimeout( ()=> pant.classList.add('achicar') , 3000) //3seg achico
-        let pantallaInicio2 = ()=> {
-            if (pant.className === 'inicio0-alice achicar') {
-                pant.className = "inicio1-alice"
-                parrafoAct.textContent = ''
-            }    
-            setTimeout(function opcty(){
-                pant.classList.add('opacidad0')
-            }, 4000) //12 seg = alice opacity 0
-        }
-        setTimeout(pantallaInicio2, 8000); //8seg pant2
-        setTimeout(()=> {
-            pant.className = 'opacidad00'
-            parrafoAct.textContent = textos.pant[0]
-            boton1.textContent = textos.btn1[0]
-            boton2.textContent = textos.btn1[0]
-            contBotones.className = 'contenedor-botones'
-            setTimeout(()=> pant.className ='pantalla', 1000) //18 seg pantalla.
-        }, 15000); //15 seg (opacidad 0)
-    }
-    inicio = false;
-}
+// let cinematica = ()=>{
+//     window.removeEventListener('keydown', iniciarAventura)
+//     navbar.classList.remove('inclinado')
+//     clearInterval(rotar1)
+//     let rotar2 = setInterval(rotarColores, 15000);
+//     if (inicio) {
+//         let pantallaInicio1 = ()=>{
+//             let em = document.createElement("em")
+//             let strong = document.createElement('strong')
+//             pant.className = 'inicio0-alice'
+//             parrafoAct.className = ''
+//             parrafoAct.textContent = 'Aventura Grafica '
+//             parrafoAct.appendChild(em)
+//             em.appendChild(strong)
+//             strong.textContent = 'Alice'
+//             parrafoAct.appendChild(document.createElement('br'))
+//             let text = document.createTextNode('Desarrollada y diseñada por:')  
+//             parrafoAct.appendChild(text)
+//             parrafoAct.appendChild(document.createElement('br'))
+//             let text2 = document.createTextNode('Miqueas Ezequiel Gimenez');
+//             parrafoAct.appendChild(text2)    
+//         }
+//         pantallaInicio1()
+//         setTimeout( ()=> pant.classList.add('achicar') , 3000) //3seg achico
+//         let pantallaInicio2 = ()=> {
+//             if (pant.className === 'inicio0-alice achicar') {
+//                 pant.className = "inicio1-alice"
+//                 parrafoAct.textContent = ''
+//             }    
+//             setTimeout(function opcty(){
+//                 pant.classList.add('opacidad0')
+//             }, 4000) //12 seg = alice opacity 0
+//         }
+//         setTimeout(pantallaInicio2, 8000); //8seg pant2
+//         setTimeout(()=> {
+//             pant.className = 'opacidad00'
+//             parrafoAct.textContent = textos.pant[0]
+//             boton1.textContent = textos.btn1[0]
+//             boton2.textContent = textos.btn1[0]
+//             contBotones.className = 'contenedor-botones'
+//             setTimeout(()=> pant.className ='pantalla', 1000) //18 seg pantalla.
+//         }, 15000); //15 seg (opacidad 0)
+//     }
+//     inicio = false;
+// }
 
 
-//PONER LAS PANTALLAS ACTUALES ACORDE a la function -- Done!
+
+
+
 
 /*                      Funciones de Pantallas                     */
 let pant27 = () => {
     pantallaActual = 27;
     mostrarTexto();
-    boton1.onclick= final4;
+    boton1.onclick= pant32;//final4
 }
 let pant26 = () => {
     pantallaActual = 26;
     mostrarTexto();
-    boton1.onclick= 27;
+    boton1.onclick= pant27;
 }
 let pant25 = () => {
     pantallaActual = 25;
     mostrarTexto();
-    boton1.onclick= 26;
+    boton1.onclick= pant26;
 }
 let pant24 = () => {
     pantallaActual = 24;
     mostrarTexto();
-    boton1.onclick= final0;
+    boton1.onclick= pant28; //final0
 }
 let pant23 = () => {
     pantallaActual = 23;
@@ -153,7 +264,7 @@ let pant21 = () => {
 let pant20 = () => {
     pantallaActual = 20;
     mostrarTexto();
-    boton1.onclick= pant20; boton2.onclick= pant22;//Dos Botones.
+    boton1.onclick= pant21; boton2.onclick= pant22;//Dos Botones.
 }
 let pant19 = () => {
     pantallaActual = 19;
@@ -163,12 +274,12 @@ let pant19 = () => {
 let pant18 = () => {
     pantallaActual = 18;
     mostrarTexto();
-    boton1.onclick= final1;
+    boton1.onclick= pant29; //final1
 }
 let pant17 = () => {
     pantallaActual = 17;
     mostrarTexto();
-    boton1.onclick= final3;
+    boton1.onclick= pant31;//final3
 }
 let pant16 = () => {
     pantallaActual = 16;
@@ -178,7 +289,7 @@ let pant16 = () => {
 let pant15 = () => {
     pantallaActual = 15;
     mostrarTexto();
-    boton1.onclick= final2;
+    boton1.onclick= pant30;//final2
 }
 let pant14 = () => {
     pantallaActual = 14;
@@ -188,7 +299,7 @@ let pant14 = () => {
 let pant13 = () => {
     pantallaActual = 13;
     mostrarTexto();
-    boton1.onclick= pant21;
+    boton1.onclick= pant20;
 }
 let pant12 = () => {
     pantallaActual = 12;
@@ -213,7 +324,7 @@ let pant9 = () => {
 let pant8 = () => {
     pantallaActual = 8;
     mostrarTexto();
-    boton1.onclick= pant11; 
+    boton1.onclick= pant11;
 }
 let pant7 = ()=> {
     pantallaActual = 7;
@@ -244,18 +355,42 @@ let pant3 = () => {
 let pant2 = () => {
     pantallaActual = 2;
     mostrarTexto();
-    boton1.onclick= pant4; boton2.onclick= pant5;//Dos Botones.
+    boton1.onclick= pant4; boton2.onclick= pant5;//Dos Botones.> {
+    // console.log(`pant${pantallaActual + 1}`);
 }
 let pant1 = () => {
     pantallaActual = 1;
     mostrarTexto();
     boton1.onclick = pant2; boton2.onclick = pant3; //Dos Botones.
-    // console.log(`pant${pantallaActual + 1}`);
 }
+
+let pant0 = () => {
+    pantallaActual = 0;
+    mostrarTexto();
+    boton1.onclick = pant1;
+    console.log(pantallaActual)
+}
+
+
+
+
 
 // -----------------------------------------------------------
 boton1.onclick= pant1;
 console.log(pantallaActual)
+
+//temporal
+pant.className ='pantalla'
+pant0()
+contBotones.className = 'contenedor-botones'
+
+pant.className
+
+
+
+
+// IF [Array.FILTER[LOS QUE SEAN DOS BOTONES]]
+//     Si no tiene dos botones entonces establezco boton2 oscurecer 
 
 
 //----- ANOTACIONES ------

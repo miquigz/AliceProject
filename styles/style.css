@@ -153,6 +153,10 @@ nav>h1>a{
     height: 768px;
 }
 
+.alejar{
+    margin-left: 1400px;
+}
+
 .pantalla>div>p{
     color:white;
     display: flex;
