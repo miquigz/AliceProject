@@ -10,7 +10,17 @@ let inicio = false;
 
 let textos = {
     pant: [
-        'Texto pantalla0',
+        `Alice:
+        Alice es una adolescente de 17 años, la cual
+        tiene una muy baja autoestima, se encuentra
+        terminando la secundaria, sus padres están
+        separados (vive con su madre), su mejor amigo
+        ya no le habla. Y se encuentra sola en la vida,
+        necesita un cambio en su vida... En base a esto
+        y siendo consciente de la vida de Alice, se
+        pide que tengan en cuenta a la hora de tomar
+        las decisiones`
+        ,
         'Texto pantalla1',
         'Texto pantalla2',
         'Texto pantalla3',
@@ -45,7 +55,7 @@ let textos = {
         'Texto pantalla32',
     ],
     btn1: [
-        'Texto boton1-Pant0',
+        'Continuar',
         'Texto boton1-Pant1', 
         'Texto boton1-Pant2', 
         'Texto boton1-Pant3', 
@@ -117,10 +127,14 @@ let textos = {
 }
 
 
-
-
-
-
+//Task's: 
+//Agregar Animacion al apretar boton, delay al moverme entre pantallas.
+//Agregar pantallas de finales: Crear evento keydown para ver los creditos:
+//      Crear animacion de creditos, redes mias, y breve comentario sobre la aventura
+//Averiguar sobre como agregar sonidos en JS
+//      Sonidos al apretar click, al mostrarse los parrafos, y al comienzo inicio
+//      Ver si se puede hacer un loop de un sonido no muy pesado(comprimirlo), para ambientar
+//              ----FIN del proyecto, no saturarlo de cosas---
 
 
 
@@ -133,97 +147,9 @@ const mostrarTexto = () => {
     if (textos.btn2[pantallaActual] !== ''){
         boton2.textContent = textos.btn2[pantallaActual];
         contBotones.insertAdjacentElement("beforeend", boton2)
-    } else{
-        if (contBotones.lastElementChild === boton2)
-            contBotones.removeChild(boton2);
-    }
+    } else if (contBotones.lastElementChild === boton2)
+        contBotones.removeChild(boton2);
 }
-
-//Evento Keydown (Principio)
-let iniciarAventura = ()=>{ //Referencia function, necesaria: para clearEventListener
-    inicio = true;
-    parrafoAct.className = 'oscurecerLetras'
-    setTimeout(cinematica, 2000)
-}
-window.addEventListener('keydown', iniciarAventura)
-
-/*                      Animacion NAVBAR (Comienzo)           */
-let rotarColores = ()=>{
-    titulo.classList.contains('blanco') ? titulo.className  = 'violeta' : titulo.className  = 'blanco'
-    let arrayA = document.querySelectorAll('a');
-    arrayA[0].classList.contains('blanco') ? arrayA[0].className  = 'violeta' : arrayA[0].className  = 'blanco'
-    arrayA[1].classList.contains('blanco') ? arrayA[1].className  = 'violeta' : arrayA[1].className  = 'blanco'
-    arrayA[2].classList.contains('blanco') ? arrayA[2].className  = 'violeta' : arrayA[2].className  = 'blanco'
-}
-let rotar1 = setInterval(rotarColores, 5000);
-setTimeout(() => {
-    titulo.className = 'rotar'
-    let a = document.createElement('a')
-    let a2 = document.createElement('a')
-    setTimeout(() => {
-        titulo.insertAdjacentText('beforeend', ' - ') //Agrego ' - '
-        a.textContent = 'Miqueas Gimenez'
-        a.href = 'aboutme.html'
-        titulo.insertAdjacentElement("beforeend", a)
-        titulo.insertAdjacentText('beforeend', ' - ')//Agrego ' - '
-        a2.textContent = 'Mapa'
-        a2.href = 'mapa.html'
-        titulo.insertAdjacentElement("beforeend", a2)
-        titulo.className = 'desRotar'
-    }, 3000);
-}, 1000);
-
-/*          Cinematica Inicio (Comienzo)           */
-// let cinematica = ()=>{
-//     window.removeEventListener('keydown', iniciarAventura)
-//     navbar.classList.remove('inclinado')
-//     clearInterval(rotar1)
-//     let rotar2 = setInterval(rotarColores, 15000);
-//     if (inicio) {
-//         let pantallaInicio1 = ()=>{
-//             let em = document.createElement("em")
-//             let strong = document.createElement('strong')
-//             pant.className = 'inicio0-alice'
-//             parrafoAct.className = ''
-//             parrafoAct.textContent = 'Aventura Grafica '
-//             parrafoAct.appendChild(em)
-//             em.appendChild(strong)
-//             strong.textContent = 'Alice'
-//             parrafoAct.appendChild(document.createElement('br'))
-//             let text = document.createTextNode('Desarrollada y diseñada por:')  
-//             parrafoAct.appendChild(text)
-//             parrafoAct.appendChild(document.createElement('br'))
-//             let text2 = document.createTextNode('Miqueas Ezequiel Gimenez');
-//             parrafoAct.appendChild(text2)    
-//         }
-//         pantallaInicio1()
-//         setTimeout( ()=> pant.classList.add('achicar') , 3000) //3seg achico
-//         let pantallaInicio2 = ()=> {
-//             if (pant.className === 'inicio0-alice achicar') {
-//                 pant.className = "inicio1-alice"
-//                 parrafoAct.textContent = ''
-//             }    
-//             setTimeout(function opcty(){
-//                 pant.classList.add('opacidad0')
-//             }, 4000) //12 seg = alice opacity 0
-//         }
-//         setTimeout(pantallaInicio2, 8000); //8seg pant2
-//         setTimeout(()=> {
-//             pant.className = 'opacidad00'
-//             parrafoAct.textContent = textos.pant[0]
-//             boton1.textContent = textos.btn1[0]
-//             boton2.textContent = textos.btn1[0]
-//             contBotones.className = 'contenedor-botones'
-//             setTimeout(()=> pant.className ='pantalla', 1000) //18 seg pantalla.
-//         }, 15000); //15 seg (opacidad 0)
-//     }
-//     inicio = false;
-// }
-
-
-
-
-
 
 /*                      Funciones de Pantallas                     */
 let pant27 = () => {
@@ -363,34 +289,144 @@ let pant1 = () => {
     mostrarTexto();
     boton1.onclick = pant2; boton2.onclick = pant3; //Dos Botones.
 }
-
 let pant0 = () => {
     pantallaActual = 0;
     mostrarTexto();
     boton1.onclick = pant1;
     console.log(pantallaActual)
 }
+//////////////////////////////////////////////////
 
 
+//Evento Keydown (Principio)
+let iniciarAventura = ()=>{ //Referencia function, necesaria: para clearEventListener
+    inicio = true;
+    parrafoAct.className = 'oscurecerLetras'
+    setTimeout(cinematica, 2000)
+}
+window.addEventListener('keydown', iniciarAventura)
 
+/*                      Animacion NAVBAR (Comienzo + [h2 de -info-])           */
+let rotarColores = ()=>{
+    titulo.classList.contains('blanco') ? titulo.className  = 'violeta' : titulo.className  = 'blanco'
+    let arrayA = document.querySelectorAll('a');
+    let h2mapa = document.querySelector('#h2mapa')
+    console.log(h2mapa);
+    arrayA[0].classList.contains('blanco') ? arrayA[0].className  = 'violeta' : arrayA[0].className  = 'blanco'
+    arrayA[1].classList.contains('blanco') ? arrayA[1].className  = 'violeta' : arrayA[1].className  = 'blanco'
+    arrayA[2].classList.contains('blanco') ? arrayA[2].className  = 'violeta' : arrayA[2].className  = 'blanco'
+    h2mapa.classList.contains('blanco') ? h2mapa.className  = 'violeta' : h2mapa.className  = 'blanco'
+}
+let rotar1 = setInterval(rotarColores, 5000);
+setTimeout(() => {
+    titulo.className = 'rotar'
+    let a = document.createElement('a')
+    let a2 = document.createElement('a')
+    setTimeout(() => {
+        titulo.insertAdjacentText('beforeend', ' - ') //Agrego ' - '
+        a.textContent = 'Info'
+        a.href = 'aboutme.html'
+        titulo.insertAdjacentElement("beforeend", a)
+        titulo.insertAdjacentText('beforeend', ' - ')//Agrego ' - '
+        a2.textContent = 'Mapa'
+        a2.href = 'mapa.html'
+        titulo.insertAdjacentElement("beforeend", a2)
+        titulo.className = 'desRotar'
+    }, 3000);
+}, 1000);
+
+/*          Cinematica Inicio (Comienzo)           */
+let cinematica = ()=>{
+    window.removeEventListener('keydown', iniciarAventura)
+    navbar.classList.remove('inclinado')
+    clearInterval(rotar1)
+    let rotar2 = setInterval(rotarColores, 20000);
+    if (inicio) {
+        let pantallaInicio1 = ()=>{
+            let em = document.createElement("em")
+            let strong = document.createElement('strong')
+            pant.className = 'inicio0-alice'
+            parrafoAct.className = ''
+            parrafoAct.textContent = 'Aventura Grafica '
+            parrafoAct.appendChild(em)
+            em.appendChild(strong)
+            strong.textContent = 'Alice'
+            parrafoAct.appendChild(document.createElement('br'))
+            let text = document.createTextNode('Desarrollada y diseñada por:')  
+            parrafoAct.appendChild(text)
+            parrafoAct.appendChild(document.createElement('br'))
+            let text2 = document.createTextNode('Miqueas Ezequiel Gimenez');
+            parrafoAct.appendChild(text2)    
+        }
+        pantallaInicio1()
+        setTimeout( ()=> pant.classList.add('achicar') , 3000) //3seg achico
+        let pantallaInicio2 = ()=> {
+            if (pant.className === 'inicio0-alice achicar') {
+                pant.className = "inicio1-alice"
+                parrafoAct.textContent = ''
+            }    
+            setTimeout(function opcty(){
+                pant.classList.add('opacidad0')
+            }, 4000) //12 seg = alice opacity 0
+        }
+        setTimeout(pantallaInicio2, 8000); //8seg pant2
+        setTimeout(()=> {
+            pant.className = 'opacidad00'
+            contBotones.className = 'contenedor-botones'
+            pant0()
+            setTimeout(()=> pant.className ='pantalla', 1000) //18 seg pantalla.
+        }, 15000); //15 seg (opacidad 0)
+    }
+    inicio = false;
+}
+
+//              Animacion de PARRAFOS y h2 de -Info-
+setInterval(() => {
+    let p1 = document.querySelector('#p1')
+    let p2 = document.querySelector('#p2')
+    let p3 = document.querySelector('#p3')
+    let h2 = document.querySelector('h2')
+    h2.classList.contains('arriba') ? h2.className = 'abajo' : h2.className = 'arriba'
+    p3.classList.contains('arriba') ? p3.className = 'abajo' : p3.className = 'arriba'
+    p2.classList.contains('arriba') ? p2.className = 'abajo' : p2.className = 'arriba'
+    p1.classList.contains('arriba') ? p1.className = 'abajo' : p1.className = 'arriba'    
+}, 13000);
+
+//              Modal Eventos y Funciones
+let modalopen = document.querySelector('#modal-abrir') //imgan con <a> abrimos
+let modalclose = document.querySelector('#modal-cerrar');
+let modal = document.querySelector('#modal');
+let cambiarMapa = document.querySelector('#modal-cambiarMapa')
+let mapaActual = document.querySelector('.modal-img')
+
+
+modalopen.addEventListener('click', (e)=>{
+    e.preventDefault();
+    setTimeout(()=>{
+        modal.className = 'modal-abierto';
+    },120)
+})
+
+modalclose.addEventListener('click', (e)=>{
+    e.preventDefault()
+    setTimeout(()=>{
+        modal.className = 'modal-cerrado'
+    },120)
+})
+
+cambiarMapa.addEventListener('click', (e)=>{
+    e.preventDefault()  
+    setTimeout(()=>{
+        let img1 = mapaActual.src
+        mapaActual.src = '../images/mapaAlice-01.jpg'
+        mapaActual.src === img1 ? mapaActual.src = '../images/mapaAlice-02.jpg' : mapaActual.src = '../images/mapaAlice-01.jpg'
+    },10)    
+})
 
 
 // -----------------------------------------------------------
-boton1.onclick= pant1;
-console.log(pantallaActual)
-
-//temporal
-pant.className ='pantalla'
-pant0()
-contBotones.className = 'contenedor-botones'
-
-pant.className
-
-
-
-
-// IF [Array.FILTER[LOS QUE SEAN DOS BOTONES]]
-//     Si no tiene dos botones entonces establezco boton2 oscurecer 
+// boton1.onclick= pant1;
+// console.log(pantallaActual)
 
 
 //----- ANOTACIONES ------
