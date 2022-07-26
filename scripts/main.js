@@ -343,20 +343,24 @@ let cinematica = ()=>{
     let rotar2 = setInterval(rotarColores, 20000);
     if (inicio) {
         let pantallaInicio1 = ()=>{
+            parrafoAct.className = ''
+            pant.className = 'inicio0-alice'
+            let frag = new DocumentFragment()
             let em = document.createElement("em")
             let strong = document.createElement('strong')
-            pant.className = 'inicio0-alice'
-            parrafoAct.className = ''
-            parrafoAct.textContent = 'Aventura Grafica '
-            parrafoAct.appendChild(em)
+            let auxNode = document.createTextNode('Desarrollada y diseñada por:')
+            let auxNode2 = document.createTextNode('Miqueas Ezequiel Gimenez')
+            frag.textContent= 'Aventura Grafica';
+            frag.appendChild(em)
             em.appendChild(strong)
-            strong.textContent = 'Alice'
-            parrafoAct.appendChild(document.createElement('br'))
-            let text = document.createTextNode('Desarrollada y diseñada por:')  
-            parrafoAct.appendChild(text)
-            parrafoAct.appendChild(document.createElement('br'))
-            let text2 = document.createTextNode('Miqueas Ezequiel Gimenez');
-            parrafoAct.appendChild(text2)    
+            strong.textContent = ' Alice'
+            frag.appendChild(document.createElement('br'))
+            frag.appendChild(auxNode)
+            frag.appendChild(document.createElement('br'))
+            frag.appendChild(auxNode2)
+            parrafoAct.textContent= ''
+            parrafoAct.appendChild(frag)
+            console.log(frag)
         }
         pantallaInicio1()
         setTimeout( ()=> pant.classList.add('achicar') , 3000) //3seg achico
