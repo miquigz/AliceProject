@@ -320,17 +320,9 @@ let rotarColores = ()=>{
 let rotar1 = setInterval(rotarColores, 5000);
 setTimeout(() => {
     titulo.className = 'rotar'
-    let a = document.createElement('a')
-    let a2 = document.createElement('a')
     setTimeout(() => {
-        titulo.insertAdjacentText('beforeend', ' - ') //Agrego ' - '
-        a.textContent = 'Info'
-        a.href = 'aboutme.html'
-        titulo.insertAdjacentElement("beforeend", a)
-        titulo.insertAdjacentText('beforeend', ' - ')//Agrego ' - '
-        a2.textContent = 'Mapa'
-        a2.href = 'mapa.html'
-        titulo.insertAdjacentElement("beforeend", a2)
+        titulo.insertAdjacentText("afterbegin", 'Aventura Grafica ')
+        titulo.insertAdjacentText('beforeend', ' - By: miquigz')
         titulo.className = 'desRotar'
     }, 3000);
 }, 1000);
