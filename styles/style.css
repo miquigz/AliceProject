@@ -4,6 +4,7 @@ body{
     scroll-behavior: smooth;
 }
 nav{
+    user-select: none;
     transition: 2s;
     width: 45%;
     background-image: url(../images/fondoAlice.jpg);
@@ -21,18 +22,21 @@ nav{
 }
 .blanco{
     transition: 2s;
+    transition-property: letter-spacing, color;
     letter-spacing: 6.2px;
     color:rgb(255, 255, 255);
 }
 .violeta{
     transition: 2s;
-    color:rgba(134, 65, 117, 0.555);
+    transition-property: letter-spacing, color;
+    color:rgba(158, 75, 137, 0.829);
     letter-spacing: 5.9px;
 }
 .rotar{
-    transition: 1s;
+    transition: 1.2s;
+    transition-property: letter-spacing, transform;
     transform: rotateX(3.142rad);
-    letter-spacing: 25px;
+    letter-spacing: 12px;
 }
 .desRotar{
     transition: 3s;
@@ -40,21 +44,10 @@ nav{
     letter-spacing: 7px;
 }
 
-nav:hover{
-    transition: 4s;
-    transform:rotate(-0.5deg) ;
-}
-
-nav>h1:hover{
-    transition: 4s;
-    letter-spacing: 2px;
-}
-
 nav>h1>a:hover{
-    transition: 2s;
+    transition: 1s;
     color:rgb(207, 102, 181);
     letter-spacing: 8px;
-    padding-left: 2px;
 }
 
 nav>h1>a{

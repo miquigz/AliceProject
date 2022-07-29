@@ -321,8 +321,13 @@ let rotar1 = setInterval(rotarColores, 5000);
 setTimeout(() => {
     titulo.className = 'rotar'
     setTimeout(() => {
+        let auxNode = document.createElement('a')
+        auxNode.textContent = 'miquigz'
+        auxNode.href = 'https://github.com/miquigz/'
+        auxNode.setAttribute('target', '_blank')
         titulo.insertAdjacentText("afterbegin", 'Aventura Grafica ')
-        titulo.insertAdjacentText('beforeend', ' - By: miquigz')
+        titulo.insertAdjacentText('beforeend', ' - By: ')
+        titulo.insertAdjacentElement('beforeend', auxNode)
         titulo.className = 'desRotar'
     }, 3000);
 }, 1000);
@@ -342,7 +347,7 @@ let cinematica = ()=>{
             let strong = document.createElement('strong')
             let auxNode = document.createTextNode('Desarrollada y diseñada por:')
             let auxNode2 = document.createTextNode('Miqueas Ezequiel Gimenez')
-            frag.textContent= 'Aventura Grafica';
+            frag.textContent= 'Aventura Gráfica';
             frag.appendChild(em)
             em.appendChild(strong)
             strong.textContent = ' Alice'
