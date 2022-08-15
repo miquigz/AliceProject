@@ -415,15 +415,19 @@ modalclose.addEventListener('click', (e)=>{
     },120)
 })
 
+const imagen1Modal = mapaActual.src;
+const urlImage = imagen1Modal.slice(0, -16);
+const imagen2Modal = urlImage + 'mapaAlice-02.jpg'
+
 cambiarMapa.addEventListener('click', (e)=>{
     e.preventDefault()  
     setTimeout(()=>{
-        let img1 = mapaActual.src
-        mapaActual.src = '../images/mapaAlice-01.jpg'
-        mapaActual.src === img1 ? mapaActual.src = '../images/mapaAlice-02.jpg' : mapaActual.src = '../images/mapaAlice-01.jpg'
+        console.log(urlImage);
+        console.log(imagen1Modal);
+        console.log(imagen2Modal);
+        mapaActual.src == imagen2Modal ? mapaActual.src = imagen1Modal : mapaActual.src = imagen2Modal;
     },10)    
 })
-
 
 // -----------------------------------------------------------
 // boton1.onclick= pant1;
