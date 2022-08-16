@@ -72,176 +72,59 @@ const mostrarTexto = () => {
 
 /*                      Funciones de Pantallas                     */
 
+const Final = ()=>{
+    parrafoAct.textContent = 'Gracias por ver, se recuerda que la historia es a fin de entretenimiento y no deberia tomarse en serio; ya que es 100% ficticia.'
+    console.log(parrafoAct.parentElement);
+    let aux = parrafoAct.parentElement;
+    let creditos = document.createElement('p');
+    let creditos2 = document.createElement('p');
+    creditos.textContent = 'Desarrollado por: Miqueas Gimenez'
+    creditos2.textContent = 'Historia y Guion: Miqueas Gimenez y Josefina Gimenez';
+    aux.insertAdjacentElement("beforeend", creditos)
+    aux.insertAdjacentElement("beforeend", creditos2)
+    boton1.textContent = 'Rehacer Aventura';
+    boton1.onclick = ()=>{
+        location = '/index.html'
+    }
+}
 
-const pant32 = () => {
-    pantallaActual = 32;
-    mostrarTexto();
-    boton1.onclick= Final;
-}
-const pant31 = () => {
-    pantallaActual = 31;
-    mostrarTexto();
-    boton1.onclick= Final;
-}
-const pant30 = () => {
-    pantallaActual = 30;
-    mostrarTexto();
-    boton1.onclick= Final;
-}
-const pant29 = () => {
-    pantallaActual = 29;
-    mostrarTexto();
-    boton1.onclick= Final;
-}
-const pant28 = () => {
-    pantallaActual = 28;
-    mostrarTexto();
-    boton1.onclick= Final;
-}
-//ARRIBA FINALES
-const pant27 = () => {
-    pantallaActual = 27;
-    mostrarTexto();
-    boton1.onclick= pant32;//final4
-}
-const pant26 = () => {
-    pantallaActual = 26;
-    mostrarTexto();
-    boton1.onclick= pant27;
-}
-const pant25 = () => {
-    pantallaActual = 25;
-    mostrarTexto();
-    boton1.onclick= pant26;
-}
-const pant24 = () => {
-    pantallaActual = 24;
-    mostrarTexto();
-    boton1.onclick= pant28; //final0
-}
-const pant23 = () => {
-    pantallaActual = 23;
-    mostrarTexto();
-    boton1.onclick= pant24;
-}
-const pant22 = () => {
-    pantallaActual = 22;
-    mostrarTexto();
-    boton1.onclick= pant23;
-}
-const pant21 = () => {
-    pantallaActual = 21;
-    mostrarTexto();
-    boton1.onclick= pant25;
-}
-const pant20 = () => {
-    pantallaActual = 20;
-    mostrarTexto();
-    boton1.onclick= pant21; boton2.onclick= pant22;//Dos Botones.
-}
-const pant19 = () => {
-    pantallaActual = 19;
-    mostrarTexto();
-    boton1.onclick= pant21;
-}
-const pant18 = () => {
-    pantallaActual = 18;
-    mostrarTexto();
-    boton1.onclick= pant29; //final1
-}
-const pant17 = () => {
-    pantallaActual = 17;
-    mostrarTexto();
-    boton1.onclick= pant31;//final3
-}
-const pant16 = () => {
-    pantallaActual = 16;
-    mostrarTexto();
-    boton1.onclick= pant19;
-}
-const pant15 = () => {
-    pantallaActual = 15;
-    mostrarTexto();
-    boton1.onclick= pant30;//final2
-}
-const pant14 = () => {
-    pantallaActual = 14;
-    mostrarTexto();
-    boton1.onclick= pant17; boton2.onclick= pant18;//Dos Botones.
-}
-const pant13 = () => {
-    pantallaActual = 13;
-    mostrarTexto();
-    boton1.onclick= pant20;
-}
-const pant12 = () => {
-    pantallaActual = 12;
-    mostrarTexto();
-    boton1.onclick= pant16;
-}
-const pant11 = () => {
-    pantallaActual = 11;
-    mostrarTexto();
-    boton1.onclick= pant15;
-}
-const pant10 = () => {
-    pantallaActual = 10;
-    mostrarTexto();
-    boton1.onclick= pant14; 
-}
-const pant9 = () => {
-    pantallaActual = 9;
-    mostrarTexto();
-    boton1.onclick= pant12; boton2.onclick= pant13; //Dos Botones.
-}
-const pant8 = () => {
-    pantallaActual = 8;
-    mostrarTexto();
-    boton1.onclick= pant11;
-}
-const pant7 = ()=> {
-    pantallaActual = 7;
-    mostrarTexto();
-    boton1.onclick = pant9 
-}
-const pant6 = ()=> {
-    pantallaActual = 6;
-    mostrarTexto();
-    boton1.onclick = pant9 
-}
-const pant5 = () => {
-    pantallaActual = 5;
-    mostrarTexto();
-    boton1.onclick= pant8; 
-}
-const pant4 = () => {
-    pantallaActual = 4;
-    mostrarTexto();
-    boton1.onclick= pant10; boton2.onclick= pant8;//Dos Botones.
-}
-const pant3 = () => {
-    pantallaActual = 3;
-    mostrarTexto();
-    console.log(pantallaActual);
-    boton1.onclick= pant6; boton2.onclick= pant7; //Dos Botones. 
-}
-const pant2 = () => {
-    pantallaActual = 2;
-    mostrarTexto();
-    boton1.onclick= pant4; boton2.onclick= pant5;//Dos Botones.> {
-    // console.log(`pant${pantallaActual + 1}`);
-}
-const pant1 = () => {
-    pantallaActual = 1;
-    mostrarTexto();
-    boton1.onclick = pant2; boton2.onclick = pant3; //Dos Botones.
-}
-const pant0 = () => {
-    pantallaActual = 0;
-    mostrarTexto();
-    boton1.onclick = pant1;
-    console.log(pantallaActual)
-}
+
+// --------- PANTALLAS CB -----------
+const pant32 = () => { pantallaActual = 32; mostrarTexto(); boton1.onclick= Final; }
+const pant31 = () => { pantallaActual = 31; mostrarTexto(); boton1.onclick= Final; }
+const pant30 = () => { pantallaActual = 30; mostrarTexto(); boton1.onclick= Final; }
+const pant29 = () => { pantallaActual = 29; mostrarTexto(); boton1.onclick= Final; }
+const pant28 = () => { pantallaActual = 28; mostrarTexto(); boton1.onclick= Final; }
+
+const pant27 = () => { pantallaActual = 27; mostrarTexto(); boton1.onclick= pant32; }
+const pant26 = () => { pantallaActual = 26; mostrarTexto(); boton1.onclick= pant27; }
+const pant25 = () => { pantallaActual = 25; mostrarTexto(); boton1.onclick= pant26; }
+const pant24 = () => { pantallaActual = 24; mostrarTexto(); boton1.onclick= pant28; }
+const pant23 = () => { pantallaActual = 23; mostrarTexto(); boton1.onclick= pant24; }
+const pant22 = () => { pantallaActual = 22; mostrarTexto(); boton1.onclick= pant23; }
+const pant21 = () => { pantallaActual = 21; mostrarTexto(); boton1.onclick= pant25; }
+const pant20 = () => { pantallaActual = 20; mostrarTexto(); boton1.onclick= pant21; boton2.onclick= pant22;}
+const pant19 = () => { pantallaActual = 19; mostrarTexto(); boton1.onclick= pant21; }
+const pant18 = () => { pantallaActual = 18; mostrarTexto(); boton1.onclick= pant29; }
+const pant17 = () => { pantallaActual = 17; mostrarTexto(); boton1.onclick= pant31; }
+const pant16 = () => { pantallaActual = 16; mostrarTexto(); boton1.onclick= pant19; }
+const pant15 = () => { pantallaActual = 15; mostrarTexto(); boton1.onclick= pant30; }
+const pant14 = () => { pantallaActual = 14; mostrarTexto(); boton1.onclick= pant17; boton2.onclick= pant18; }
+const pant13 = () => { pantallaActual = 13; mostrarTexto(); boton1.onclick= pant20; }
+const pant12 = () => { pantallaActual = 12; mostrarTexto(); boton1.onclick= pant16; }
+const pant11 = () => { pantallaActual = 11; mostrarTexto(); boton1.onclick= pant15; }
+const pant10 = () => { pantallaActual = 10; mostrarTexto(); boton1.onclick= pant14; }
+const pant9 = () =>  { pantallaActual = 9; mostrarTexto(); boton1.onclick= pant12; boton2.onclick= pant13; }
+const pant8 = () => { pantallaActual = 8; mostrarTexto(); boton1.onclick= pant11; }
+const pant7 = ()=> { pantallaActual = 7; mostrarTexto(); boton1.onclick = pant9; }
+const pant6 = ()=> { pantallaActual = 6; mostrarTexto(); boton1.onclick = pant9; }
+const pant5 = () => { pantallaActual = 5; mostrarTexto(); boton1.onclick= pant8; }
+const pant4 = () => { pantallaActual = 4; mostrarTexto(); boton1.onclick= pant10; boton2.onclick= pant8;}
+const pant3 = () => { pantallaActual = 3; mostrarTexto(); boton1.onclick= pant6; boton2.onclick= pant7;}
+const pant2 = () => { pantallaActual = 2; mostrarTexto(); boton1.onclick= pant4; boton2.onclick= pant5;}
+const pant1 = () => {pantallaActual = 1; mostrarTexto(); boton1.onclick = pant2; boton2.onclick = pant3;}
+const pant0 = () => { pantallaActual = 0; mostrarTexto(); boton1.onclick = pant1;}
+
 //////////////////////////////////////////////////
 
 

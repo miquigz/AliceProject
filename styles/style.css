@@ -157,6 +157,7 @@ nav>h1>a{
 
 .contenedor-p>p{
     margin:25px;
+    font-size: x-large;
 }
 
 .inicio-contenedor-botones{
@@ -175,6 +176,7 @@ nav>h1>a{
 
 button{
     transition: 1s;
+    user-select: none;
     border-radius: 20px;
 }
 
