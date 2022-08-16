@@ -8,123 +8,42 @@ let parrafoAct = document.querySelector("#texto-actual");
 let pantallaActual = -1;
 let inicio = false;
 
-let textos = {
-    pant: [
-        `Alice:
-        Alice es una adolescente de 17 años, la cual
-        tiene una muy baja autoestima, se encuentra
-        terminando la secundaria, sus padres están
-        separados (vive con su madre), su mejor amigo
-        ya no le habla. Y se encuentra sola en la vida,
-        necesita un cambio en su vida... En base a esto
-        y siendo consciente de la vida de Alice, se
-        pide que tengan en cuenta a la hora de tomar
-        las decisiones`
-        ,
-        'Texto pantalla1',
-        'Texto pantalla2',
-        'Texto pantalla3',
-        'Texto pantalla4',
-        'Texto pantalla5',
-        'Texto pantalla6',
-        'Texto pantalla7', 
-        'Texto pantalla8',
-        'Texto pantalla9',
-        'Texto pantalla10',
-        'Texto pantalla11', 
-        'Texto pantalla12',
-        'Texto pantalla13',
-        'Texto pantalla14',
-        'Texto pantalla15',
-        'Texto pantalla16',
-        'Texto pantalla17',
-        'Texto pantalla18',
-        'Texto pantalla19',
-        'Texto pantalla20',
-        'Texto pantalla21',
-        'Texto pantalla22',
-        'Texto pantalla23',
-        'Texto pantalla24',
-        'Texto pantalla25',
-        'Texto pantalla26',
-        'Texto pantalla27',
-        'Texto pantalla28',
-        'Texto pantalla29',
-        'Texto pantalla30',
-        'Texto pantalla31',
-        'Texto pantalla32',
-    ],
-    btn1: [
-        'Continuar',
-        'Texto boton1-Pant1', 
-        'Texto boton1-Pant2', 
-        'Texto boton1-Pant3', 
-        'Texto boton1-Pant4',
-        'Texto boton1-Pant5',
-        'Texto boton1-Pant6',
-        'Texto boton1-Pant7',
-        'Texto boton1-Pant8',
-        'Texto boton1-Pant9',
-        'Texto boton1-Pant10',
-        'Texto boton1-Pant11',
-        'Texto boton1-Pant12',
-        'Texto boton1-Pant13',
-        'Texto boton1-Pant14',
-        'Texto boton1-Pant15',
-        'Texto boton1-Pant16',
-        'Texto boton1-Pant17',
-        'Texto boton1-Pant18', 
-        'Texto boton1-Pant19',
-        'Texto boton1-Pant20',
-        'Texto boton1-Pant21',
-        'Texto boton1-Pant22', 
-        'Texto boton1-Pant23', 
-        'Texto boton1-Pant24', 
-        'Texto boton1-Pant25',
-        'Texto boton1-Pant26',
-        'Texto boton1-Pant27', 
-        'Texto boton1-Pant28', 
-        'Texto boton1-Pant29', 
-        'Texto boton1-Pant30',
-        'Texto boton1-Pant31',
-        'Texto boton1-Pant32'
-    ],
-    btn2: [
-        '',//0
-        'Texto boton2-Pant1', 
-        'Texto boton2-Pant2', 
-        'Texto boton2-Pant3', 
-        'Texto boton2-Pant4',
-        '',//5
-        '',
-        '',
-        '',//8
-        'Texto boton2-Pant9',
-        '',//10
-        '',//
-        '',//
-        '',//13
-        'Texto boton2-Pant14',
-        '',//15
-        '',//
-        '',//
-        '', //
-        '',//19
-        'Texto boton2-Pant20',
-        '',//21
-        '', //22
-        '', //23
-        '', //24
-        '',//25
-        '',//26
-        '',//27 
-        '',//28 [Final0]
-        '',//29 [Final1]
-        '',//30 [Final2]
-        '',//31 [Final3]
-        ''//32 [Final4]
-    ]
+
+textosAlice = '../textosAlice.JSON';
+
+function peticionAjax(recurso, metodo='get'){
+    const promesaPeticion = new Promise((resolve, reject)=>{
+        let xhr = new XMLHttpRequest();
+        xhr.open(metodo, recurso);
+        xhr.addEventListener('load', ()=>{
+            if (xhr.status === 200) {
+                let respuesta = JSON.parse(xhr.response);
+                resolve(respuesta);
+            }else{
+                let err = {
+                    type: 'Error ajax status',
+                    body: xhr.status,
+                    recurso
+                }
+                reject(err);
+            }
+        })
+        xhr.send();
+    })
+    return promesaPeticion;
 }
+
+const peticion = peticionAjax(textosAlice);
+let textos = '';
+
+peticion
+    .then((data)=>{
+    textos = data;
+    console.log(textos);
+    })
+    .catch((err)=>{
+        console.log('Hubo un fallo en la peticion ajax: ', err)
+    })
 
 
 //Task's: 
@@ -152,144 +71,172 @@ const mostrarTexto = () => {
 }
 
 /*                      Funciones de Pantallas                     */
-let pant27 = () => {
+
+
+const pant32 = () => {
+    pantallaActual = 32;
+    mostrarTexto();
+    boton1.onclick= Final;
+}
+const pant31 = () => {
+    pantallaActual = 31;
+    mostrarTexto();
+    boton1.onclick= Final;
+}
+const pant30 = () => {
+    pantallaActual = 30;
+    mostrarTexto();
+    boton1.onclick= Final;
+}
+const pant29 = () => {
+    pantallaActual = 29;
+    mostrarTexto();
+    boton1.onclick= Final;
+}
+const pant28 = () => {
+    pantallaActual = 28;
+    mostrarTexto();
+    boton1.onclick= Final;
+}
+//ARRIBA FINALES
+const pant27 = () => {
     pantallaActual = 27;
     mostrarTexto();
     boton1.onclick= pant32;//final4
 }
-let pant26 = () => {
+const pant26 = () => {
     pantallaActual = 26;
     mostrarTexto();
     boton1.onclick= pant27;
 }
-let pant25 = () => {
+const pant25 = () => {
     pantallaActual = 25;
     mostrarTexto();
     boton1.onclick= pant26;
 }
-let pant24 = () => {
+const pant24 = () => {
     pantallaActual = 24;
     mostrarTexto();
     boton1.onclick= pant28; //final0
 }
-let pant23 = () => {
+const pant23 = () => {
     pantallaActual = 23;
     mostrarTexto();
     boton1.onclick= pant24;
 }
-let pant22 = () => {
+const pant22 = () => {
     pantallaActual = 22;
     mostrarTexto();
     boton1.onclick= pant23;
 }
-let pant21 = () => {
+const pant21 = () => {
     pantallaActual = 21;
     mostrarTexto();
     boton1.onclick= pant25;
 }
-let pant20 = () => {
+const pant20 = () => {
     pantallaActual = 20;
     mostrarTexto();
     boton1.onclick= pant21; boton2.onclick= pant22;//Dos Botones.
 }
-let pant19 = () => {
+const pant19 = () => {
     pantallaActual = 19;
     mostrarTexto();
     boton1.onclick= pant21;
 }
-let pant18 = () => {
+const pant18 = () => {
     pantallaActual = 18;
     mostrarTexto();
     boton1.onclick= pant29; //final1
 }
-let pant17 = () => {
+const pant17 = () => {
     pantallaActual = 17;
     mostrarTexto();
     boton1.onclick= pant31;//final3
 }
-let pant16 = () => {
+const pant16 = () => {
     pantallaActual = 16;
     mostrarTexto();
     boton1.onclick= pant19;
 }
-let pant15 = () => {
+const pant15 = () => {
     pantallaActual = 15;
     mostrarTexto();
     boton1.onclick= pant30;//final2
 }
-let pant14 = () => {
+const pant14 = () => {
     pantallaActual = 14;
     mostrarTexto();
     boton1.onclick= pant17; boton2.onclick= pant18;//Dos Botones.
 }
-let pant13 = () => {
+const pant13 = () => {
     pantallaActual = 13;
     mostrarTexto();
     boton1.onclick= pant20;
 }
-let pant12 = () => {
+const pant12 = () => {
     pantallaActual = 12;
     mostrarTexto();
     boton1.onclick= pant16;
 }
-let pant11 = () => {
+const pant11 = () => {
     pantallaActual = 11;
     mostrarTexto();
     boton1.onclick= pant15;
 }
-let pant10 = () => {
+const pant10 = () => {
     pantallaActual = 10;
     mostrarTexto();
     boton1.onclick= pant14; 
 }
-let pant9 = () => {
+const pant9 = () => {
     pantallaActual = 9;
     mostrarTexto();
     boton1.onclick= pant12; boton2.onclick= pant13; //Dos Botones.
 }
-let pant8 = () => {
+const pant8 = () => {
     pantallaActual = 8;
     mostrarTexto();
     boton1.onclick= pant11;
 }
-let pant7 = ()=> {
+const pant7 = ()=> {
     pantallaActual = 7;
     mostrarTexto();
     boton1.onclick = pant9 
 }
-let pant6 = ()=> {
+const pant6 = ()=> {
     pantallaActual = 6;
     mostrarTexto();
     boton1.onclick = pant9 
 }
-let pant5 = () => {
+const pant5 = () => {
     pantallaActual = 5;
     mostrarTexto();
     boton1.onclick= pant8; 
 }
-let pant4 = () => {
+const pant4 = () => {
     pantallaActual = 4;
     mostrarTexto();
     boton1.onclick= pant10; boton2.onclick= pant8;//Dos Botones.
 }
-let pant3 = () => {
+const pant3 = () => {
     pantallaActual = 3;
     mostrarTexto();
     console.log(pantallaActual);
     boton1.onclick= pant6; boton2.onclick= pant7; //Dos Botones. 
 }
-let pant2 = () => {
+const pant2 = () => {
     pantallaActual = 2;
     mostrarTexto();
     boton1.onclick= pant4; boton2.onclick= pant5;//Dos Botones.> {
     // console.log(`pant${pantallaActual + 1}`);
 }
-let pant1 = () => {
+const pant1 = () => {
     pantallaActual = 1;
     mostrarTexto();
     boton1.onclick = pant2; boton2.onclick = pant3; //Dos Botones.
 }
-let pant0 = () => {
+const pant0 = () => {
     pantallaActual = 0;
     mostrarTexto();
     boton1.onclick = pant1;
@@ -299,7 +246,7 @@ let pant0 = () => {
 
 
 //Evento Keydown (Principio)
-let iniciarAventura = ()=>{ //Referencia function, necesaria: para clearEventListener
+const iniciarAventura = ()=>{ //Referencia function, necesaria: para clearEventListener
     inicio = true;
     parrafoAct.className = 'oscurecerLetras'
     setTimeout(cinematica, 2000)
@@ -333,7 +280,7 @@ setTimeout(() => {
 }, 1000);
 
 /*          Cinematica Inicio (Comienzo)           */
-let cinematica = ()=>{
+const cinematica = ()=>{
     window.removeEventListener('keydown', iniciarAventura)
     navbar.classList.remove('inclinado')
     clearInterval(rotar1)
@@ -394,11 +341,11 @@ setInterval(() => {
 }, 13000);
 
 //              Modal Eventos y Funciones
-let modalopen = document.querySelector('#modal-abrir') //imgan con <a> abrimos
-let modalclose = document.querySelector('#modal-cerrar');
-let modal = document.querySelector('#modal');
-let cambiarMapa = document.querySelector('#modal-cambiarMapa')
-let mapaActual = document.querySelector('.modal-img')
+const modalopen = document.querySelector('#modal-abrir') //imgan con <a> abrimos
+const modalclose = document.querySelector('#modal-cerrar');
+const modal = document.querySelector('#modal');
+const cambiarMapa = document.querySelector('#modal-cambiarMapa')
+const mapaActual = document.querySelector('.modal-img')
 
 
 modalopen.addEventListener('click', (e)=>{
@@ -422,9 +369,6 @@ const imagen2Modal = urlImage + 'mapaAlice-02.jpg'
 cambiarMapa.addEventListener('click', (e)=>{
     e.preventDefault()  
     setTimeout(()=>{
-        console.log(urlImage);
-        console.log(imagen1Modal);
-        console.log(imagen2Modal);
         mapaActual.src == imagen2Modal ? mapaActual.src = imagen1Modal : mapaActual.src = imagen2Modal;
     },10)    
 })
