@@ -1,3 +1,7 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+}
+
 body{
     background-image: url(../images/fondo-body.jpg);
     background-repeat: repeat;
@@ -58,6 +62,7 @@ nav>h1>a{
 
 .inicio{
     border-radius: 25%;
+    user-select: none;
     background-repeat: no-repeat;
     transition: 3s;
     background-image: url(../images/fondoAlice.jpg);

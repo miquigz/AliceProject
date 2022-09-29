@@ -8,9 +8,6 @@ let parrafoAct = document.querySelector("#texto-actual");
 let pantallaActual = -1;
 let inicio = false;
 
-
-textosAlice = '../textosAlice.JSON';
-
 function peticionAjax(recurso, metodo='get'){
     const promesaPeticion = new Promise((resolve, reject)=>{
         let xhr = new XMLHttpRequest();
@@ -33,34 +30,22 @@ function peticionAjax(recurso, metodo='get'){
     return promesaPeticion;
 }
 
+textosAlice = '../textosAlice.JSON';
 const peticion = peticionAjax(textosAlice);
 let textos = '';
-
 peticion
     .then((data)=>{
-    textos = data;
-    console.log(textos);
+        textos = data;
+        console.log("request Ajax done!");
     })
     .catch((err)=>{
         console.log('Hubo un fallo en la peticion ajax: ', err)
     })
 
 
-//Task's: 
-//Agregar Animacion al apretar boton, delay al moverme entre pantallas.
-//Agregar pantallas de finales: Crear evento keydown para ver los creditos:
-//      Crear animacion de creditos, redes mias, y breve comentario sobre la aventura
-//Averiguar sobre como agregar sonidos en JS
-//      Sonidos al apretar click, al mostrarse los parrafos, y al comienzo inicio
-//      Ver si se puede hacer un loop de un sonido no muy pesado(comprimirlo), para ambientar
-//              ----FIN del proyecto, no saturarlo de cosas---
-
-
-
 //------------------------FUNCIONES-------------------
 
 const mostrarTexto = () => {
-    console.log(contBotones.lastElementChild === boton2)
     parrafoAct.textContent = textos.pant[pantallaActual];
     boton1.textContent = textos.btn1[pantallaActual];
     if (textos.btn2[pantallaActual] !== ''){
@@ -74,7 +59,6 @@ const mostrarTexto = () => {
 
 const Final = ()=>{
     parrafoAct.textContent = 'Gracias por ver, se recuerda que la historia es a fin de entretenimiento y no deberia tomarse en serio; ya que es 100% ficticia.'
-    console.log(parrafoAct.parentElement);
     let aux = parrafoAct.parentElement;
     let creditos = document.createElement('p');
     let creditos2 = document.createElement('p');
@@ -141,7 +125,6 @@ let rotarColores = ()=>{
     titulo.classList.contains('blanco') ? titulo.className  = 'violeta' : titulo.className  = 'blanco'
     let arrayA = document.querySelectorAll('a');
     let h2mapa = document.querySelector('#h2mapa')
-    console.log(h2mapa);
     arrayA[0].classList.contains('blanco') ? arrayA[0].className  = 'violeta' : arrayA[0].className  = 'blanco'
     arrayA[1].classList.contains('blanco') ? arrayA[1].className  = 'violeta' : arrayA[1].className  = 'blanco'
     arrayA[2].classList.contains('blanco') ? arrayA[2].className  = 'violeta' : arrayA[2].className  = 'blanco'
@@ -187,7 +170,6 @@ const cinematica = ()=>{
             frag.appendChild(auxNode2)
             parrafoAct.textContent= ''
             parrafoAct.appendChild(frag)
-            console.log(frag)
         }
         pantallaInicio1()
         setTimeout( ()=> pant.classList.add('achicar') , 3000) //3seg achico
@@ -255,20 +237,3 @@ cambiarMapa.addEventListener('click', (e)=>{
         mapaActual.src == imagen2Modal ? mapaActual.src = imagen1Modal : mapaActual.src = imagen2Modal;
     },10)    
 })
-
-// -----------------------------------------------------------
-// boton1.onclick= pant1;
-// console.log(pantallaActual)
-
-
-//----- ANOTACIONES ------
-
-// let pant1 = () => {
-//     pantallaActual = 1;
-//     mostrarTexto();
-
-//     boton1.onclick = `pant${pantallaActual + 1}`; //PANT2
-//     boton2.onclick = `pant${pantallaActual + 2}`; //PANT3
-
-//     // console.log(`pant${pantallaActual + 1}`);
-// }
