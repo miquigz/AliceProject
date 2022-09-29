@@ -1,0 +1,26 @@
+{
+  "name": "aliceproject",
+  "version": "1.0.0",
+  "description": "``Is a Graphic Aventure, firstly designed in processing (Enviorement design Java), that later on, converted to javascript language.\r The story is 100% fictitious, it should not be taken seriously.\r ``\r ## Run project:\r ``\r Download zip or clone project, and then; open the index.html\r ``  \r ## Used and its why:\r * The adventure was first made in 100% vanilla javascript, and 100% vanilla css, in the purpose of learning.\r * To put into practice my knowledge of ajax requests, I made one; making a request to a json file inside the same folder where the project is.\r * I decided to use webpack, to optimize my adventure graphic, but it is made 100% in vanilla js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miquigz/AliceProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miquigz/AliceProject/issues"
+  },
+  "homepage": "https://github.com/miquigz/AliceProject#readme",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
